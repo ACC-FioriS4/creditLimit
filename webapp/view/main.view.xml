@@ -1,0 +1,34 @@
+<mvc:View height="100%" controllerName="com.credit.limitcreditLimit.controller.main" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<Page id="idPage" title="{i18n>title}" showHeader="false">
+		<!-- this CSS class add a standard spacing to all the page content -->
+		<content>
+			<ObjectHeader id="objHeader" title="{/d/BusinessPartnerName}" backgroundDesign="Solid"
+				number="{parts:[{path:'/d/CreditLimitAmount'},{path:'/d/CreditSegmentCurrency'}],
+			type: 'sap.ui.model.type.Currency',
+			formatOptions: {showMeasure: false}}"
+				numberUnit="{/d/CreditSegmentCurrency}">
+				<attributes>
+					<ObjectAttribute title="{/d/CreditSegment_Text}" text="{/d/CreditSegment}"/>
+					<ObjectAttribute title="{/d/CreditRiskClass_Text}" text="{/d/CreditLimitRule}"/>
+				</attributes>
+				<statuses>
+					<!--ObjectStatus icon="{path: '/d/CreditRiskClass', formatter: '.formatter.iconStatus'}"
+						state="{path: '/d/CreditRiskClass', formatter: '.formatter.formatStatus'}"/-->
+					<ObjectStatus id="available" title="{i18n>available}" text=""/>
+					<ObjectStatus id="commitment" title="{i18n>commitment}" text=""/>
+				</statuses>
+			</ObjectHeader>
+			<!--IconTabBar expanded="{device>/isNoPhone}" class="sapUiSmallMarginBottom sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter text="Pendientes" icon="sap-icon://sales-order" iconColor="Critical"-->
+						<!--mvc:XMLView viewName="com.credit.limitcreditLimit.view.soList"/-->
+					<!--/IconTabFilter>
+					<IconTabFilter text="Cerradas" icon="sap-icon://payment-approval" iconColor="Positive">
+						<mvc:XMLView viewName="com.credit.limitcreditLimit.view.soListC"/>
+					</IconTabFilter>
+				</items>
+			</IconTabBar-->
+		</content>
+	</Page>
+</mvc:View>

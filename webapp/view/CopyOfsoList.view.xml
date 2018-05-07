@@ -1,0 +1,40 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
+controllerName="com.credit.limitcreditLimit.controller.soList" xmlns:html="http://www.w3.org/1999/xhtml">
+	<SearchField
+					liveChange="onSearch"
+					width="100%" />
+	<List id="soList"
+		items="{ path: '/d/results', sorter: { path: 'SalesOrder', descending: true } }"
+			headerText="Ordenes de Venta">
+		<items>
+			<!--ObjectListItem title="{SalesOrder}" type="Active"
+				number="{ parts:[{path:'TotalNetAmount'},{path:'TransactionCurrency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"
+				numberUnit="{TransactionCurrency}"
+				press="onListItemPress">
+				<firstStatus>
+					<ObjectStatus text="{SalesOffice_Text}" state="Success"/>
+					<ObjectStatus text="gasolinera" state="Success"/>
+				</firstStatus>
+				<attributes>
+					<ObjectAttribute text="{SalesGroup_Text}"/>
+					<ObjectAttribute text="{SalesOrderType}"/>
+				</attributes>
+				<customData>
+					<core:CustomData key="salesOrder" value="{SalesOrder}"/>
+					<core:CustomData key="soldToParty" value="{SoldToParty}"/>
+				</customData>
+			</ObjectListItem-->
+					<StandardListItem
+						title="{SalesOrder}"
+						description="{SalesOffice_Text}"
+						info="{ parts:[{path:'TotalNetAmount'},{path:'TransactionCurrency'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"
+						infoState="Success"
+						press="onListItemPress">
+					<customData>
+					<core:CustomData key="salesOrder" value="{SalesOrder}"/>
+					<core:CustomData key="soldToParty" value="{SoldToParty}"/>
+				</customData>
+				</StandardListItem>
+		</items>
+	</List>
+</mvc:View>

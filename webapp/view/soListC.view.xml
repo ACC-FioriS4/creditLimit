@@ -1,0 +1,71 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.credit.limitcreditLimit.controller.soListC"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Table id="soList"
+		headerText="Pedidos"
+		items="{
+			path:'/d/results',
+			sorter: {
+				path: 'TotalNetAmount',
+				descending: true
+			}
+		}" >
+		<headerToolbar>
+			<Toolbar>
+				<Title text="Pedidos" level="H2"/>
+				<ToolbarSpacer/>
+				<!--CheckBox text="Fixed Layout" selected="true" select="onCheckBoxSelect"/-->
+				<Button icon="sap-icon://excel-attachment" press="onExport"/>
+				<SearchField
+					liveChange="onSearch"
+					width="100%" />
+				<!--Button text="Open Dialog" press="onOpenPressed"/-->
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<!--Column mergeDuplicates="true">
+				<header>
+					<Text text="Estatus" />
+				</header>
+			</Column-->
+			<Column mergeDuplicates="true">
+				<header>
+					<Text text="Estación" />
+				</header>
+			</Column>
+			<Column>
+				<header>
+					<Text text="Número de Pedido" />
+				</header>
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true"
+				hAlign="End" >
+				<header>
+					<Text text="Material" />
+				</header>
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true"
+				hAlign="Center" >
+				<header>
+					<Text text="Costo" />
+				</header>
+			</Column>
+		</columns>
+		<ColumnListItem press="onListItemPress">
+			<!--ObjectIdentifier title="Estatus" text="{OverallSDProcessStatus}" /-->
+			<ObjectIdentifier title="Estación" text="{ShipTo}" />
+			<ObjectIdentifier title="{SalesOrder}" text="#INVOICE" />
+			<ObjectIdentifier title="Material" text="Cantidad" />
+			<ObjectNumber
+					number="{
+						parts:[{path:'TotalNetAmount'},{path:'TransactionCurrency'}],
+						type: 'sap.ui.model.type.Currency',
+						formatOptions: {showMeasure: false}
+					}"
+					unit="{TransactionCurrency}" />
+		</ColumnListItem>
+	</Table>
+</mvc:View>
